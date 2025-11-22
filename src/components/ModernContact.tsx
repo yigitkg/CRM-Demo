@@ -3,10 +3,12 @@ import { motion } from 'framer-motion'
 import { Send, MapPin, Phone, Mail, Clock, CheckCircle } from 'lucide-react'
 import { Button, Input, Card, GlowingCard, AnimatedText, ParticleBackground } from './ui'
 import { useIntersectionObserver } from '../hooks'
+import { useBreakpoint } from '../hooks'
 import { fadeInUp, stagger } from '../utils/animations'
 
 const ModernContact = () => {
   const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.1 })
+  const { isDesktop } = useBreakpoint()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -56,7 +58,7 @@ const ModernContact = () => {
       id="contact" 
       className="py-24 bg-gradient-to-br from-gray-900 via-primary-900 to-gray-900 text-white relative overflow-hidden"
     >
-      <ParticleBackground variant="network" />
+      {isDesktop && <ParticleBackground variant="network" />}
       
       <div className="section-container relative z-10">
         <motion.div

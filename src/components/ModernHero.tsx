@@ -2,17 +2,19 @@ import { motion } from 'framer-motion'
 import { ChevronRight, Play, Sparkles } from 'lucide-react'
 import { Button, ParticleBackground, AnimatedText, GlowingCard } from './ui'
 import { useIntersectionObserver } from '../hooks'
+import { useBreakpoint } from '../hooks'
 import { fadeInUp, stagger } from '../utils/animations'
 
 const ModernHero = () => {
   const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.2 })
+  const { isDesktop } = useBreakpoint()
 
   return (
     <section 
       ref={elementRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50"
     >
-      <ParticleBackground variant="cosmic" />
+      {isDesktop && <ParticleBackground variant="cosmic" />}
       
       <div className="section-container relative z-10">
         <motion.div

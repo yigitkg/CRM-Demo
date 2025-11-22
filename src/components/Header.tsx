@@ -6,6 +6,12 @@ const Header = () => {
   return (
     <header className="bg-white shadow-sm fixed w-full top-0 z-50">
       <div className="section-container">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] bg-primary-600 text-white px-4 py-2 rounded"
+        >
+          Skip to content
+        </a>
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
@@ -14,7 +20,7 @@ const Header = () => {
             <span className="text-xl font-bold text-gray-900">CRM Pro</span>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Primary">
             <a href="#features" className="text-gray-600 hover:text-primary-600 transition-colors">Features</a>
             <a href="#pricing" className="text-gray-600 hover:text-primary-600 transition-colors">Pricing</a>
             <a href="#testimonials" className="text-gray-600 hover:text-primary-600 transition-colors">Reviews</a>
@@ -32,6 +38,10 @@ const Header = () => {
 
           <button
             className="md:hidden p-2"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -43,7 +53,7 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden border-t py-4">
+          <div id="mobile-menu" className="md:hidden border-t py-4">
             <div className="flex flex-col space-y-4">
               <a href="#features" className="text-gray-600 hover:text-primary-600">Features</a>
               <a href="#pricing" className="text-gray-600 hover:text-primary-600">Pricing</a>
